@@ -51,7 +51,7 @@
             </aside>
 
             <main class="main-content">
-                <!-- Etapa 1: Seleção de Serviço -->
+                <!-- Step 1: Seleção de Serviço -->
                 <div class="step">
                     <h2>Seleção de serviço</h2>
                     <form>
@@ -71,9 +71,26 @@
                                 <option value="virtual">Virtual</option>
                             </select>
                         </div>
+
+                        <!-- Pergunta: Vai trazer alguém? -->
+                        <div class="form-group" id="bring-someone-container" style="display: none;">
+                            <label>Vai trazer alguém consigo?</label>
+                            <div>
+                                <button type="button" id="bring-no" class="btn-primary">Não</button>
+                                <button type="button" id="bring-yes" class="btn-primary">Sim</button>
+                            </div>
+                        </div>
+
+                        <!-- Quantidade de pessoas -->
+                        <div class="form-group" id="number-of-people-container" style="display: none;">
+                            <label for="number-of-people">Quantas pessoas?</label>
+                            <input type="number" id="number-of-people" min="1" value="1">
+                        </div>
+
                         <button type="button" class="btn-primary btn-next">Continuar</button>
                     </form>
                 </div>
+
 
                 <!-- Etapa 2: Data e Hora -->
                 <div class="step">
@@ -157,7 +174,7 @@
     </section>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const steps = document.querySelectorAll('.step');
             const nextButtons = document.querySelectorAll('.btn-next');
             const prevButtons = document.querySelectorAll('.btn-prev');
@@ -169,7 +186,13 @@
             const lastNameField = document.getElementById('last-name');
             const emailField = document.getElementById('email');
             const phoneField = document.getElementById('phone');
+            const bringSomeoneContainer = document.getElementById('bring-someone-container');
+            const numberOfPeopleContainer = document.getElementById('number-of-people-container');
+            const bringYesButton = document.getElementById('bring-yes');
+            const bringNoButton = document.getElementById('bring-no');
+            const numberOfPeopleField = document.getElementById('number-of-people');
             let currentStep = 0;
+            let numberOfPeople = 1; // Padrão para 1 pessoa
 
             function showStep(index) {
                 steps.forEach((step, i) => {
@@ -179,19 +202,20 @@
                 // Atualizar Resumo de Pagamento na quarta etapa
                 if (index === 3) {
                     const selectedService = serviceDropdown.options[serviceDropdown.selectedIndex].textContent;
-                    const servicePrice = serviceDropdown.value === 'virtual' ? '2,500.00 MT' : '5,000.00 MT';
+                    const basePrice = serviceDropdown.value === 'virtual' ? 2500 : 5000;
+                    const totalPrice = basePrice * numberOfPeople;
 
-                    document.getElementById('selected-service').textContent = selectedService;
-                    document.getElementById('service-price').textContent = servicePrice;
-                    document.getElementById('subtotal').textContent = servicePrice;
-                    document.getElementById('total').textContent = servicePrice;
+                    document.getElementById('selected-service').textContent =
+                        `${selectedService} x ${numberOfPeople} pessoa(s)`;
+                    document.getElementById('service-price').textContent = `${totalPrice.toLocaleString()} MT`;
+                    document.getElementById('subtotal').textContent = `${totalPrice.toLocaleString()} MT`;
+                    document.getElementById('total').textContent = `${totalPrice.toLocaleString()} MT`;
                 }
             }
 
             function validateStep(index) {
                 let valid = true;
 
-                // Validações específicas para cada step
                 if (index === 0) {
                     if (!serviceDropdown.value || !locationDropdown.value) {
                         alert('Por favor, preencha todos os campos obrigatórios na seleção de serviço.');
@@ -211,6 +235,30 @@
 
                 return valid;
             }
+
+            serviceDropdown.addEventListener('change', () => {
+                if (serviceDropdown.value === 'presencial') {
+                    bringSomeoneContainer.style.display = 'block';
+                } else {
+                    bringSomeoneContainer.style.display = 'none';
+                    numberOfPeopleContainer.style.display = 'none';
+                    numberOfPeople = 1; // Resetar para 1 pessoa
+                }
+            });
+
+            bringYesButton.addEventListener('click', () => {
+                numberOfPeopleContainer.style.display = 'block';
+                numberOfPeople = parseInt(numberOfPeopleField.value, 10) || 1;
+            });
+
+            bringNoButton.addEventListener('click', () => {
+                numberOfPeopleContainer.style.display = 'none';
+                numberOfPeople = 1; // Resetar para 1 pessoa
+            });
+
+            numberOfPeopleField.addEventListener('change', () => {
+                numberOfPeople = parseInt(numberOfPeopleField.value, 10) || 1;
+            });
 
             nextButtons.forEach((button, index) => {
                 button.addEventListener('click', () => {
@@ -235,8 +283,6 @@
             // Initialize the form to show the first step
             showStep(currentStep);
         });
-
-
     </script>
 </body>
 
