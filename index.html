@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valdez Beleza</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Primeira seção: Apresentação -->
     <section class="hero">
@@ -13,11 +15,11 @@
             <div class="content">
                 <h1>Valdez Beleza</h1>
                 <p>
-                    <strong>Advogado</strong>, sócio-fundador da VBA – Valdez Beleza & Advogados, 
+                    <strong>Advogado</strong>, sócio-fundador da VBA – Valdez Beleza & Advogados,
                     Agente de Propriedade Industrial, Formador e Docente Universitário.
                 </p>
                 <p>
-                    Com mais de <strong>10 (dez) anos de experiência</strong>, prestando assistência jurídica nas áreas 
+                    Com mais de <strong>10 (dez) anos de experiência</strong>, prestando assistência jurídica nas áreas
                     de Direito Comercial, Propriedade Industrial, Trabalho, Família e Sucessões e Contencioso.
                 </p>
                 <p>
@@ -35,48 +37,207 @@
         <div class="container-form">
             <aside class="sidebar">
                 <div class="menu-item active">
-                    <span class="icon">📋</span> 
+                    <span class="icon">📋</span>
                     <span>Seleção de serviço</span>
                 </div>
                 <div class="menu-item">
-                    <span class="icon">📅</span> 
+                    <span class="icon">📅</span>
                     <span>Data hora</span>
                 </div>
                 <div class="menu-item">
-                    <span class="icon">👤</span> 
+                    <span class="icon">👤</span>
                     <span>Sua informação</span>
-                </div>
-                <div class="contact">
-                    <p>Entre em Contacto</p>
-                    <p>+258 82 411 9818</p>
-                    <p>geral@vba.co.mz</p>
                 </div>
             </aside>
 
             <main class="main-content">
-                <h2>Seleção de serviço</h2>
-                <form>
-                    <div class="form-group">
-                        <label for="service">Serviço:</label>
-                        <select id="service" required>
-                            <option value="">Selecione o serviço</option>
-                            <option value="presencial">Consulta Jurídica Presencial - 5,000 MT</option>
-                            <option value="virtual">Consulta Jurídica Virtual (ZOOM) - 2,500 MT</option>
-                        </select>
+                <!-- Etapa 1: Seleção de Serviço -->
+                <div class="step">
+                    <h2>Seleção de serviço</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="service">Serviço:</label>
+                            <select id="service" required>
+                                <option value="">Selecione o serviço</option>
+                                <option value="presencial">Consulta Jurídica Presencial - 5,000 MT</option>
+                                <option value="virtual">Consulta Jurídica Virtual (ZOOM) - 2,500 MT</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Local:</label>
+                            <select id="location" required>
+                                <option value="">Selecionar Local</option>
+                                <option value="fisico">Escritório Físico</option>
+                                <option value="virtual">Virtual</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn-primary btn-next">Continuar</button>
+                    </form>
+                </div>
+
+                <!-- Etapa 2: Data e Hora -->
+                <div class="step">
+                    <h2>Data e Hora</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="date">Data:</label>
+                            <input type="date" id="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Hora:</label>
+                            <input type="time" id="time" required>
+                        </div>
+                        <button type="button" class="btn-primary btn-prev">Voltar</button>
+                        <button type="button" class="btn-primary btn-next">Continuar</button>
+                    </form>
+                </div>
+                <!-- Etapa 3: Informações do Usuário -->
+                <div class="step">
+                    <h2>Sua Informação</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="first-name">Primeiro Nome:</label>
+                            <input type="text" id="first-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Sobrenome:</label>
+                            <input type="text" id="last-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone:</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <button type="button" class="btn-primary btn-prev">Voltar</button>
+                        <button type="button" class="btn-primary btn-next">Continuar</button>
+                    </form>
+                </div>
+
+
+                <!-- Etapa 4: Resumo de Pagamento -->
+                <div class="step">
+                    <h2>Resumo de Pagamento</h2>
+                    <div class="payment-summary">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Serviços</th>
+                                    <th>Preço</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="selected-service">Consulta Jurídica Virtual (ZOOM) (2,500.00 MT) x 1 pessoa
+                                    </td>
+                                    <td id="service-price">2,500.00 MT</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td>Subtotal</td>
+                                    <td id="subtotal">2,500.00 MT</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Total</strong></td>
+                                    <td id="total"><strong>2,500.00 MT</strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <p>Será redirecionado para a página de pagamento.</p>
                     </div>
-                    <div class="form-group">
-                        <label for="location">Local:</label>
-                        <select id="location" required>
-                            <option value="">Selecionar Local</option>
-                            <option value="fisico">Escritório Físico</option>
-                            <option value="virtual">Virtual</option>
-                        </select>
-                    </div>
+                    <button type="button" class="btn-primary btn-prev">Voltar</button>
                     <button type="submit" class="btn-primary">Continuar</button>
-                </form>
-                
+                </div>
+
             </main>
         </div>
     </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const steps = document.querySelectorAll('.step');
+            const nextButtons = document.querySelectorAll('.btn-next');
+            const prevButtons = document.querySelectorAll('.btn-prev');
+            const serviceDropdown = document.getElementById('service');
+            const locationDropdown = document.getElementById('location');
+            const dateField = document.getElementById('date');
+            const timeField = document.getElementById('time');
+            const firstNameField = document.getElementById('first-name');
+            const lastNameField = document.getElementById('last-name');
+            const emailField = document.getElementById('email');
+            const phoneField = document.getElementById('phone');
+            let currentStep = 0;
+
+            function showStep(index) {
+                steps.forEach((step, i) => {
+                    step.style.display = i === index ? 'block' : 'none';
+                });
+
+                // Atualizar Resumo de Pagamento na quarta etapa
+                if (index === 3) {
+                    const selectedService = serviceDropdown.options[serviceDropdown.selectedIndex].textContent;
+                    const servicePrice = serviceDropdown.value === 'virtual' ? '2,500.00 MT' : '5,000.00 MT';
+
+                    document.getElementById('selected-service').textContent = selectedService;
+                    document.getElementById('service-price').textContent = servicePrice;
+                    document.getElementById('subtotal').textContent = servicePrice;
+                    document.getElementById('total').textContent = servicePrice;
+                }
+            }
+
+            function validateStep(index) {
+                let valid = true;
+
+                // Validações específicas para cada step
+                if (index === 0) {
+                    if (!serviceDropdown.value || !locationDropdown.value) {
+                        alert('Por favor, preencha todos os campos obrigatórios na seleção de serviço.');
+                        valid = false;
+                    }
+                } else if (index === 1) {
+                    if (!dateField.value || !timeField.value) {
+                        alert('Por favor, preencha a data e a hora.');
+                        valid = false;
+                    }
+                } else if (index === 2) {
+                    if (!firstNameField.value || !lastNameField.value || !emailField.value || !phoneField.value) {
+                        alert('Por favor, preencha todas as informações pessoais.');
+                        valid = false;
+                    }
+                }
+
+                return valid;
+            }
+
+            nextButtons.forEach((button, index) => {
+                button.addEventListener('click', () => {
+                    if (validateStep(currentStep)) {
+                        if (currentStep < steps.length - 1) {
+                            currentStep++;
+                            showStep(currentStep);
+                        }
+                    }
+                });
+            });
+
+            prevButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    if (currentStep > 0) {
+                        currentStep--;
+                        showStep(currentStep);
+                    }
+                });
+            });
+
+            // Initialize the form to show the first step
+            showStep(currentStep);
+        });
+
+
+    </script>
 </body>
+
 </html>
