@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valdez Beleza</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Primeira seção: Apresentação -->
+    <section class="hero">
+        <div class="container">
+            <div class="content">
+                <h1>Valdez Beleza</h1>
+                <p>
+                    <strong>Advogado</strong>, sócio-fundador da VBA – Valdez Beleza & Advogados, 
+                    Agente de Propriedade Industrial, Formador e Docente Universitário.
+                </p>
+                <p>
+                    Com mais de <strong>10 (dez) anos de experiência</strong>, prestando assistência jurídica nas áreas 
+                    de Direito Comercial, Propriedade Industrial, Trabalho, Família e Sucessões e Contencioso.
+                </p>
+                <p>
+                    <strong>Mestre em Direito de Petróleo e Gás</strong> pela Universidade Eduardo Mondlane.
+                </p>
+            </div>
+            <div class="image">
+                <img src="imgs/Yamal.jpeg" alt="Valdez Beleza">
+            </div>
+        </div>
+    </section>
+
+    <!-- Segunda seção: Formulário -->
+    <section class="form-section">
+        <div class="container-form">
+            <aside class="sidebar">
+                <div class="menu-item active">
+                    <span class="icon">📋</span> 
+                    <span>Seleção de serviço</span>
+                </div>
+                <div class="menu-item">
+                    <span class="icon">📅</span> 
+                    <span>Data hora</span>
+                </div>
+                <div class="menu-item">
+                    <span class="icon">👤</span> 
+                    <span>Sua informação</span>
+                </div>
+                <div class="contact">
+                    <p>Entre em Contacto</p>
+                    <p>+258 82 411 9818</p>
+                    <p>geral@vba.co.mz</p>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <h2>Seleção de serviço</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="service">Serviço:</label>
+                        <select id="service" required>
+                            <option value="">Selecione o serviço</option>
+                            <option value="presencial">Consulta Jurídica Presencial - 5,000 MT</option>
+                            <option value="virtual">Consulta Jurídica Virtual (ZOOM) - 2,500 MT</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Local:</label>
+                        <select id="location" required>
+                            <option value="">Selecionar Local</option>
+                            <option value="fisico">Escritório Físico</option>
+                            <option value="virtual">Virtual</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary">Continuar</button>
+                </form>
+                
+            </main>
+        </div>
+    </section>
+</body>
+</html>
